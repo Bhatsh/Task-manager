@@ -61,3 +61,17 @@
   grid-auto-flow: column;
   grid-column-gap: 10px;
 }
+
+.title {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(228, 222, 222);
+  border-radius: 4px;
+  color: #777272;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  span {
+    font-weight: normal;
+  }
+}

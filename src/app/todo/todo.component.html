@@ -13,24 +13,39 @@
               />
               <mat-hint>Task Name</mat-hint>
             </mat-form-field>
-            <button
-              (click)="addTask()"
-              [disabled]="taskForm.invalid"
-              mat-raised-button
-              color="accent"
-            >
-              Add
-            </button>
+            <div class="d-flex">
+              <button
+                *ngIf="!isEditEnabled"
+                (click)="addTask()"
+                [disabled]="taskForm.invalid"
+                mat-raised-button
+                color="accent"
+              >
+                Add
+              </button>
+              <button
+                *ngIf="isEditEnabled"
+                (click)="updateTask()"
+                [disabled]="taskForm.invalid"
+                mat-raised-button
+                color="primary"
+              >
+                Update
+              </button>
+            </div>
           </form>
         </mat-card>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 mt-3">
       <div cdkDropListGroup>
         <div class="row">
           <div class="col-md-4">
             <div class="example-container">
-              <h2>Tasks</h2>
+              <h2 class="title">
+                Tasks
+                <span *ngIf="tasks.length > 0">--{{ tasks.length }}</span>
+              </h2>
 
               <div
                 cdkDropList
@@ -55,7 +70,7 @@
                     <button
                       mat-icon-button
                       color="primary"
-                      (click)="editTask(i)"
+                      (click)="editTask(item, i)"
                     >
                       <mat-icon>edit</mat-icon>
                     </button>
@@ -66,7 +81,12 @@
           </div>
           <div class="col-md-4">
             <div class="example-container">
-              <h2>In Progress</h2>
+              <h2 class="title">
+                In Progress
+                <span *ngIf="inProgress.length > 0"
+                  >--{{ inProgress.length }}</span
+                >
+              </h2>
 
               <div
                 cdkDropList
@@ -93,7 +113,10 @@
           </div>
           <div class="col-md-4">
             <div class="example-container">
-              <h2>Done</h2>
+              <h2 class="title">
+                Done
+                <span *ngIf="done.length > 0">--{{ done.length }}</span>
+              </h2>
 
               <div
                 cdkDropList
@@ -107,6 +130,16 @@
                   cdkDrag
                 >
                   {{ item.description }}
+                  <button
+                    mat-icon-button
+                    color="warn"
+                    (click)="deleteDoneTask(i)"
+                  >
+                    <mat-icon> delete </mat-icon>
+                  </button>
+                  <button mat-icon-button color="primary">
+                    <mat-icon> check_circle </mat-icon>
+                  </button>
                 </div>
               </div>
             </div>
