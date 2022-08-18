@@ -14,9 +14,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { TodoComponent } from './todo/todo.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, TodoComponent],
+  declarations: [AppComponent, NavbarComponent, TodoComponent, FooterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

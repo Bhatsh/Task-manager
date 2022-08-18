@@ -130,16 +130,18 @@
                   cdkDrag
                 >
                   {{ item.description }}
-                  <button
-                    mat-icon-button
-                    color="warn"
-                    (click)="deleteDoneTask(i)"
-                  >
-                    <mat-icon> delete </mat-icon>
-                  </button>
-                  <button mat-icon-button color="primary">
-                    <mat-icon> check_circle </mat-icon>
-                  </button>
+                  <div class="d-flex">
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="deleteDoneTask(i)"
+                    >
+                      <mat-icon> delete </mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent">
+                      <mat-icon> check_circle </mat-icon>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
